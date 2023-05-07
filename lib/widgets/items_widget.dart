@@ -1,3 +1,5 @@
+import 'package:coffee_shop/screens/single_item_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -34,7 +36,14 @@ class ItemsWidget extends StatelessWidget {
             child: Column(
               children: [
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SingleItemScreen(img[i]),
+                      ),
+                    );
+                  },
                   child: Container(
                     margin: EdgeInsets.all(10),
                     child: Image.asset(
@@ -70,6 +79,32 @@ class ItemsWidget extends StatelessWidget {
                       ],
                     ),
                   ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "\$5",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Container(
+                            padding: EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                              color: Color(0xFFE57734),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Icon(
+                              CupertinoIcons.add,
+                              size: 20,
+                              color: Colors.white,
+                            ))
+                      ]),
                 ),
               ],
             ),
